@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Creation</title>
+
+    <style>
+        /* body {
+            font-family: "Arial";
+        } */
+
+        td {
+            padding-bottom: 10px;
+        }
+
+
+    </style>
+</head>
+<body>
+    <h1>Register - Create Account</h1>
+
+    <form action="#">
+      <table style="padding-left: 20px; ">  <!--border="1"-->
+        <tr>
+            <td align="right"><label><font color="red">*</font>Your Name &nbsp;</label></td>
+            <td colspan="5"><input type="text" name="urname" size="32"></td>
+        </tr>
+
+        <tr>
+            <td align="right"><label><font color="red">*</font>E-Mail ID &nbsp;</label></td>
+            <td colspan="5"><input type="text" name="email" multiple size="50"></td> 
+        </tr>
+
+        <!-- method - 1 -->
+        <tr>
+            <td align="right"><label><font color="red">*</font>Alternate &nbsp;&nbsp;<br>E-Mail ID &nbsp;</label></td>
+            <td colspan="5"><input type="text" name="email" multiple size="50"></td> 
+        </tr>
+
+        <!-- method - 2 -->
+        <!--  
+        <tr>
+            <td align="right"><label><font color="red">*</font>Alternate &nbsp;</label>
+            <td rowspan="2"><input type="text" name="email" multiple size="45"></td> 
+        </tr>
+        <tr>
+            <td align="right">E-Mail ID &nbsp;</td>
+        </tr> -->
+
+
+        <!-- 1st try 
+        <tr>
+            <td></td>
+            <td style="width: 13%;">Country Code</td>
+            <td style="width: 2%; text-align: center;">-&nbsp;</td>
+            <td style="width: 10%; text-align: center;">City Code</td>
+            <td style="width: 2%; text-align: center;">-&nbsp;</td>
+            <td style="width: 58%;">Phone Number</td>
+        </tr> -->
+
+        <tr>
+            <td></td>
+            <td>Country Code</td>
+            <td>-&nbsp;</td>
+            <td align="center">City Code</td>
+            <td>-&nbsp;</td>
+           
+            <td>Phone Number</td>
+        </tr>
+
+         <!-- 1 px = 2 char -->
+        <tr>
+            <td align="right">Your Phone&nbsp;</td>
+            <td><input type="text" name="countryCode" size="8"></td>
+            <td align="center">-</td>
+            <td><input type="text" name="cityCode" size="6"></td>
+            <td align="center">-</td>
+            <td><input type="text" name="phoneNo" multiple></td>
+        </tr>
+
+        <tr>
+            <td align="right">Mobile Phone&nbsp;</td>
+            <td colspan="5"><input type="text" name="mobliePhone" multiple size="32"></td>
+        </tr>
+
+        <tr>
+            <td align="right">
+                <!-- i tried <span> instead of <div> or <font> -->
+                <span style="color:red">*</span>Your Postal&nbsp;<br>Address&nbsp;
+            </td>
+            <td rowspan="1" colspan="5">
+                <textarea rows="4", cols="50" name="postalAddr">
+                </textarea>
+            </td>
+        </tr>
+
+        <tr>
+            <td align="right"><font color="red">*</font>Country&nbsp;</td>
+            <td colspan="5">
+                <select>
+                    <option value="select1">----------Select One----------&nbsp;</option>
+                    <option value="select2">----------Select Two----------&nbsp;</option>
+                    <option value="select3">----------Select Three----------&nbsp;</option>
+                </select>
+            </td>
+        </tr>
+
+        <tr>
+            <td align="right"><font color="red">*</font>Password&nbsp;</td>
+            <td colspan="5"> <input type="password" name="password" size="25"></td>
+        </tr>
+
+        <tr>
+            <td align="right"><font color="red">*</font>Re - Enter&nbsp;<br>Password&nbsp;</td>
+            <td colspan="5"> <input type="password" name="comPassword" size="25"></td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td colspan="5"><input type="checkbox" name="accept"><strong>I accept the <font color="blue"><u>Terms of Use</u></font></strong></td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td><button align="center" type="submit">Continue >></button></td>
+            <td colspan="4"><button align="center" type="reset">Reset</button></td>
+        </tr>
+      </table>
+      
+
+    </form>
+</body>
+</html>
