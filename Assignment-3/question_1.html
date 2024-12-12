@@ -9,11 +9,11 @@
         /* body {
             font-family: "Arial";
         } */
+
         table {
-            min-width: 500px;
-            /* max-width: 500px; if I use max-width, table can be shrinked */
+            min-width: 600px;
         }
-        
+
         td {
             padding-bottom: 10px;
         }
@@ -29,21 +29,21 @@
     <h1>Register - Create Account</h1>
 
     <form action="#">
-      <table style="margin: 30px 0 0 20px;">  <!--border="1"-->
+      <table  style="padding-top: 10px;">  <!--border="1"-->
         <tr>
             <td align="right"><label><font color="red">*</font>Your Name &nbsp;</label></td>
-            <td colspan="5"><input type="text" name="urname" size="32"></td>
+            <td colspan="5"><input type="text" name="urname" size="32" required></td>
         </tr>
 
         <tr>
             <td align="right"><label><font color="red">*</font>E-Mail ID &nbsp;</label></td>
-            <td colspan="5"><input type="text" name="email" multiple size="50"></td> 
+            <td colspan="5"><input type="text" name="email" multiple size="50" required></td> 
         </tr>
 
         <!-- method - 1 -->
         <tr>
             <td align="right"><label><font color="red">*</font>Alternate &nbsp;&nbsp;<br>E-Mail ID &nbsp;</label></td>
-            <td colspan="5"><input type="text" name="email" multiple size="50"></td> 
+            <td colspan="5"><input type="text" name="email" multiple size="50" required></td> 
         </tr>
 
         <!-- method - 2 -->
@@ -98,7 +98,8 @@
                 <span style="color:red">*</span>Your Postal&nbsp;<br>Address&nbsp;
             </td>
             <td rowspan="1" colspan="5">
-                <textarea rows="4", cols="50" name="postalAddr">
+                <!-- required still doesn't work as expected -->
+                <textarea name="postalAddr" rows="4", cols="50" required>
                 </textarea>
             </td>
         </tr>
@@ -106,7 +107,7 @@
         <tr>
             <td align="right"><font color="red">*</font>Country&nbsp;</td>
             <td colspan="5">
-                <select>
+                <select required>
                     <option value="select1">----------Select One----------&nbsp;</option>
                     <option value="select2">----------Select Two----------&nbsp;</option>
                     <option value="select3">----------Select Three----------&nbsp;</option>
@@ -116,12 +117,12 @@
 
         <tr>
             <td align="right"><font color="red">*</font>Password&nbsp;</td>
-            <td colspan="5"> <input type="password" name="password" size="25"></td>
+            <td colspan="5"> <input type="password" name="password" size="25" required></td>
         </tr>
 
         <tr>
             <td align="right"><font color="red">*</font>Re - Enter&nbsp;<br>Password&nbsp;</td>
-            <td colspan="5"> <input type="password" name="comPassword" size="25"></td>
+            <td colspan="5"> <input type="password" name="comPassword" size="25" required></td>
         </tr>
 
         <tr>
