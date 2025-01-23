@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 1 Q-1</title>
+
+    <style>
+
+        body {
+            align-content: "center";
+            margin: 100px;
+        }
+        fieldset {
+            max-width: 540px;
+            margin-bottom: 20px;
+            padding-bottom: 3px;
+        }
+
+        legend {
+            margin-left:-5px;
+        }
+
+        input {
+            margin-bottom: 2px;
+        }
+
+        .labl1 {
+            margin-left:-10px;
+        }
+
+        .radio {
+            margin-left: -5px;
+        }
+    </style>
+
+    <script>
+        function validateAndGo(event) {
+            var fname = document.forms["paymentForm"]["fname"].value;
+            var lname = document.forms["paymentForm"]["lname"].value;
+            var street = document.forms["paymentForm"]["street"].value;
+            var city = document.forms["paymentForm"]["city"].value;
+            var state = document.forms["paymentForm"]["state"].value;
+            var country = document.forms["paymentForm"]["country"].value;
+            var pcode = document.forms["paymentForm"]["postcode"].value;
+            var cardnum = document.forms["paymentForm"]["cardnum"].value;
+            var edate = document.forms["paymentForm"]["expdate"].value;
+
+            if (fname == null || fname=="") {
+                alert("First Name must not be empty!");
+                document.forms["paymentForm"]["fname"].setAttribute("required", "true"); //for input's submit and button
+                document.forms["paymentForm"]["fname"].focus(); // for normal input's button
+                event.preventDefault();
+                return false;
+
+            } else if (fname.length > 9) {
+                alert("First Name must not be more than 9 characters!");
+                document.forms["paymentForm"]["fname"].focus();
+                event.preventDefault();
+                return false;
+            }
+            
+            if (lname == null || lname==""){
+                alert("Last Name must not be empty!");
+                document.forms["paymentForm"]["lname"].setAttribute("required", "true");
+                document.forms["paymentForm"]["lname"].focus();
+                event.preventDefault();
+                return false;
+
+            } else if (lname.length > 7) {
+                alert("LastName must not be more than 7 characters!");
+                document.forms["paymentForm"]["lname"].focus();
+                event.preventDefault();
+                return false;
+            }
+
+            if (street == null || street=="") {
+                alert("Street field must not be empty!");
+                document.forms["paymentForm"]["street"].setAttribute("required", "true");
+                document.forms["paymentForm"]["street"].focus();
+                event.preventDefault();
+                return false;
+
+            } else if (city == null || city=="") {
+                alert("City field must not be empty!");
+                document.forms["paymentForm"]["city"].setAttribute("required", "true");
+                document.forms["paymentForm"]["city"].focus();
+                event.preventDefault();
+                return false;
+
+            } else if (state == null || state=="") {
+                alert("State field must not be empty!");
+                document.forms["paymentForm"]["state"].setAttribute("required", "true");
+                document.forms["paymentForm"]["state"].focus();
+                event.preventDefault();
+                return false;
+
+            } else if (pcode.length != 5 ) {
+                alert("Post code must be 5 numbers!");
+                document.forms["paymentForm"]["postcode"].focus();
+                event.preventDefault();
+                return false;
+
+            } else if (country == null || country=="") {
+                alert("Country field must not be empty!");
+                document.forms["paymentForm"]["country"].setAttribute("required", "true");
+                document.forms["paymentForm"]["country"].focus();
+                event.preventDefault();
+                return false;
+
+            }
+
+            if (cardnum == null || cardnum =="" || typeof cardnum == "number") {
+                alert("Card Number must not be empty!");
+                document.forms["paymentForm"]["cardnum"].setAttribute("required", "true");
+                document.forms["paymentForm"]["cardnum"].focus();
+                event.preventDefault();
+                return false;
+                
+            } else if (edate == null || edate == "") {
+                alert("Expiry date must not be blank!");
+                document.forms["paymentForm"]["expdate"].setAttribute("required", "true");
+                document.forms["paymentForm"]["expdate"].focus();
+                event.preventDefault();
+                return false;
+            
+            } else {
+                alert("Thank You!")
+                document.forms["paymentForm"].submit();
+                return false;
+            }
+        }
+
+        function resetForm () {
+            document.forms["myForm"].reset();
+        }
+
+    </script>
+</head>
+<body>
+    <h2>Payment Registration</h2>
+
+    <form name="paymentForm">
+        <fieldset>
+            <legend>Name</legend> <br>
+            <label class="labl1">Title</label>
+            <select style="width:80px;">
+                <option value="mr">Mr.</option>
+                <option value="mrs">Mrs.</option>
+                <option value="ms">Ms.</option>
+            </select>
+
+            <label>First name</label>
+            <input type="text" name="fname" size="15.5">
+
+            <label>Last name</label>
+            <input type="text" name="lname" size="15.5">     
+        </fieldset>
+
+        <fieldset>
+            <legend>Address</legend> <br>
+            <label class="labl1">Street</label>
+            <input type="text" name="street" size="15">
+
+            <label>City</label>
+            <input type="text" name="city" size="15">
+
+            <label>State</label>
+            <input type="text" name="state" size="15">
+
+            <label class="labl1">Postcode</label>
+            <input type="number" name="postcode" size="15">
+
+            <label>Country</label>
+            <input type="text" name="country" size="15">
+        </fieldset>
+
+        <fieldset>
+            <legend>Payment details</legend> <br>
+
+            <fieldset class="field" style="margin-left: -10px; margin-right: -10px;">
+                <legend>Credit card</legend>
+                <input class="radio" type="radio" name="method" value="american express" checked><label>American Express</label>
+                <input type="radio" name="method" value="mastercard"><label>Mastercard</label>
+                <input type="radio" name="method" value="visa"><label>Visa</label>
+                <input type="radio" name="method" value="blockbuster card"><label>Blockbuster Card</label>
+            </fieldset>
+
+            <label class="labl1">Card number</label>
+            <input type="number" name="cardnum" size="15.5">
+
+            <label>Expiry date</label>
+            <!-- type="date" -->
+            <input type="text" name="expdate" size="15.5">     
+
+            <br><br>
+
+            <!-- <input class="labl1" style="padding: 1px 20px 1px 20px;" type="button" onclick="validateAndGo(event)" value="Submit my details"> -->
+            <input class="labl1" style="padding: 1px 20px 1px 20px;" type="submit" onclick="validateAndGo(event)" value="Submit my details">
+            <!-- <button class="labl1"  type="submit" style="padding: 1px 20px 1px 20px;" onclick="validateAndGo(event)">Submit my details</button> -->
+            <input type="reset" value="Reset" onclick="resetForm()">
+
+        </fieldset>
+    </form>
+</body>
+</html>
