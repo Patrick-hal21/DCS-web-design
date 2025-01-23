@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment 1 Q.2(Survey)</title>
+</head>
+<body>
+    <h2>Survey</h2>
+
+    <p>If you have a moment, we'd appreciate it if you would fill out this survey.</p>
+
+    <h3>Your information:</h3>
+
+    <form name="surveyForm">
+        <fieldset>
+            <legend>Information</legend>
+
+            <label>First Name:</label>
+            <input type="text" name="fname"><br><br>
+
+            <label>Lasst Name:</label>
+            <input type="text" name="lname"><br><br>
+
+            <label>Email Address:</label>
+            <input type="email" name="uremail"><br><br>
+
+            <h3>How did you hear about us?</h3>
+
+            <input type="radio" name="heard" value="Search engine">Search engine
+            <input type="radio" name="heard" value="Word of mouth">Word of mouth
+            <input type="radio" name="heard" value="Other">Other <br>
+
+            <h3>Would you like to receive announcements about new products and sprcial offers?</h3>
+
+            <input type="checkbox" checked name="yes">YES, I'd like to receive information about new products and special offers.<br><br>
+
+            <label>Please contact me by </label>
+            <select style="width:80px;" name="contactInfo">
+                <option value="Email">Email</option>
+                <option value="Postal Mail">Postal Mail</option>
+                <option value="Both">Both</option>
+            </select> <br><br>
+
+            <input type="submit" onclick="validateSurvey(event)" name="submit" value="Submit">
+
+            <input type="reset" value="Reset">
+
+        </fieldset>
+    </form>
+
+
+    <script>
+        function validateSurvey(event) {
+
+            var fname = document.forms["surveyForm"]["fname"].value;
+            var lname = document.forms["surveyForm"]["lname"].value;
+            var email = document.forms["surveyForm"]["uremail"].value;
+
+            var radios = document.forms["surveyForm"]["heard"];
+            var selected;
+
+
+            if  (fname == null || fname=="") {
+                alert("First Name must not be empty!");
+                event.preventDefault();
+                document.forms["surveyForm"]["fname"].setAttribute("required", "true");
+                document.forms["surveyForm"]["fname"].focus();
+                return false;
+
+            } else if (lname == null || lname=="") {
+                alert("Last Name must not be empty!");
+                event.preventDefault();
+                document.forms["surveyForm"]["lname"].setAttribute("required", "true");
+                document.forms["surveyForm"]["lname"].focus();
+                return false;
+
+            } else if (email == null || email=="") {
+                alert("Email must not be empty and be in right format!");
+                event.preventDefault();
+                document.forms["surveyForm"]["uremail"].focus();
+                return false;
+            }
+
+            for (let i=0; i<radios.length; i++) {
+                if (radios[i].checked) {
+                    selected = radios[i].value;
+                }
+            }
+
+            if (selected) {
+                displayData(); // modify
+                return true;
+
+            } else {
+                alert ("Please select the way you heard about us!");
+                event.preventDefault();
+                return false;
+            }
+        }
+
+        function displayData() {
+            var fname = document.forms["surveyForm"]["fname"].value;
+            var lname = document.forms["surveyForm"]["lname"].value;
+            var email = document.forms["surveyForm"]["uremail"].value;
+            var radios = document.forms["surveyForm"]["heard"];
+            var selected;
+            var check = document.forms["surveyForm"]["yes"].checked ? "YES" : "NO";
+            var contact = document.forms["surveyForm"]["contactInfo"].value;
+
+            for (let i = 0; i < radios.length; i++) {
+                if (radios[i].checked) {
+                    selected = radios[i].value;
+                }
+            }
+            
+            const newWindow = window.open("", "_blank", "width=600,height=400");
+
+            newWindow.document.write("<p>Thanks! We have received your submission.</p>");
+            newWindow.document.write("<h2>Survey Data</h1>");
+            newWindow.document.write("<p>First Name: " + fname + "</p>");
+            newWindow.document.write("<p>Last Name: " + lname + "</p>");
+            newWindow.document.write("<p>Email: " + email + "</p>");
+            newWindow.document.write("<p>Heard About Us: " + selected + "</p>");
+            newWindow.document.write("<p>Receive announcement: " + check + "</p>");
+            newWindow.document.write("<p>Contact Info: " + (contact == "Both" ? "Both(Email and Postal Mail)" : contact) + "</p>");
+        }
+
+        // function submitSurvey(event) {
+        //     if (validateSurvey(event)) {
+        //         displayData(event);
+        //     }
+        // }
+    </script>
+</body>
+</html>
