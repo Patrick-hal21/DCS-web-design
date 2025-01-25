@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment-2</title>
+</head>
+<body>
+
+    <h3><a href="https://www.google.com" target ="_blank">Google</a></h3>
+    
+    <p>Artificial intelligence (AI) is a branch of computer science that focuses on creating machines and
+         systems capable of performing tasks that typically require human intelligence.
+          These tasks include learning, reasoning, problem-solving, perception, and language understanding.
+           AI systems are designed to analyze vast amounts of data, identify patterns, and make decisions based on the information available.
+            The ultimate goal of AI is to create machines that can operate autonomously and efficiently in a wide range of environments,
+             providing valuable assistance and insights to humans.</p>
+    
+    <p>There are various types of AI, each with different capabilities and applications. Narrow AI, also known as weak AI,
+         is designed to perform specific tasks, such as facial recognition or language translation, with a high degree of accuracy.
+          In contrast, general AI, or strong AI, aims to replicate human intelligence and reasoning abilities across a broad spectrum of tasks.
+           While narrow AI is already widely used in various industries, general AI remains a long-term goal for researchers and developers.
+            The development of AI involves multiple disciplines, including machine learning, natural language processing, and computer vision,
+             to create sophisticated algorithms and models.</p>
+
+    <p>Understanding AI also involves recognizing its potential benefits and challenges. AI has the potential to revolutionize industries
+         by automating repetitive tasks, enhancing decision-making processes, and enabling new innovations.
+          For example, AI can improve healthcare by analyzing medical data to diagnose diseases and recommend treatments.
+           However, the widespread adoption of AI also raises ethical and societal concerns, such as job displacement, privacy issues, 
+           and the need for transparent and accountable AI systems. To harness the full potential of AI while mitigating its risks,
+            ongoing research, and collaboration between technologists, policymakers, and society are essential.</p>
+
+    <!-- <div style="box-sizing:border-box;"> -->
+    <button onclick="changeColor()">Change Color</button>
+    <button onclick="changeFont()">Change Font</button>
+    <button onclick="changeSize()">Change Size</button>
+    <button onclick="displayTime()">Show Time</button>
+    <!-- <button onclick="startClock()">Show Time</button> -->
+    <button onclick="changeLink()">Change Link</button>
+    <!-- </div> -->
+    <br><br>
+
+    <div></div>
+
+    <script>
+        var colorChanged = false, fontChanged = false, sizeChanged = false,
+         linkChanged = false, displayed = false;
+         var start;
+        
+
+        function changeColor() {
+            var text = document.getElementsByTagName("p");
+
+            for (let i=0; i<text.length;i++) {
+                if (colorChanged == false) {
+                    // text[i].setAttribute("style", "color:darkgreen;");
+                    text[i].style.color = 'darkgreen';
+                } else {
+                    // text[i].removeAttribute("style");
+                    // text[i].setAttribute("style", "color:dark;");
+                    text[i].style.color = '';
+                }
+            }
+
+
+            colorChanged = !colorChanged;
+        }
+
+        function changeFont() {
+            var text = document.getElementsByTagName("p");
+
+            for (let i=0; i<text.length; i++) {
+                if (fontChanged == false) {
+
+                    text[i].style.fontFamily = "Arial, Helvetica, sans-serif";
+                    // text[i].style.fontFamily = "'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif";
+                } else {
+                    text[i].style.fontFamily = '';
+                }
+            }
+
+            fontChanged = !fontChanged;
+        }
+
+        function changeSize() {
+            var text = document.getElementsByTagName("p");
+
+            for (let i=0; i<text.length; i++) {
+                if (sizeChanged == false) {
+
+                    text[i].style.fontSize = "18px";
+                    // text[i].style.fontFamily = "'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif";
+                } else {
+                    text[i].style.fontSize = '';
+                }
+            }
+
+            sizeChanged = !sizeChanged;
+        }
+
+        function changeLink() {
+            var links = document.getElementsByTagName("a");
+
+            for (let i = 0; i < links.length; i++) {
+                if (linkChanged == false) {
+                    links[i].setAttribute("href", "https://www.yahoo.com");
+                    links[i].innerText = "Yahoo";
+                } else {
+                    links[i].setAttribute("href", "https://www.google.com");
+                    links[i].innerText = "Google";
+                }
+            }
+
+            linkChanged = !linkChanged;
+        }
+
+        function displayTime() {
+            var currentTime = new Date();
+
+            var currentHours = currentTime.getHours();
+            var currentMinutes = currentTime.getMinutes();
+            var currentSeconds = currentTime.getSeconds();
+
+            // Pad the minutes and seconds with leading zeros, if required
+            currentMinutes = ( currentMinutes < 10 ? "0" : "" ) + currentMinutes;
+            currentSeconds = ( currentSeconds < 10 ? "0" : "" ) + currentSeconds;
+
+            // Choose either "AM" or "PM" as appropriate
+            var timeOfDay = ( currentHours < 12 ) ? "AM" : "PM";
+
+            // Convert the hours component to 12-hour format if needed
+            currentHours = ( currentHours > 12 ) ? currentHours - 12 : currentHours;
+
+            // Compose the string for display
+            var currentTimeString = currentHours + ":" + currentMinutes + ":" + currentSeconds + " " + timeOfDay;
+
+            if (displayed == false) {
+                document.getElementsByTagName("div")[0].innerHTML = currentTimeString;
+            } else {
+                // Update the time display
+                document.getElementsByTagName("div")[0].innerHTML = "";
+            }
+
+            displayed = !displayed;
+            // to display clock
+            // document.getElementsByTagName("div")[0].innerHTML = currentTimeString;
+            
+        }
+
+        // function startClock() {
+
+        //     if (displayed == false) {
+        //         displayTime();
+        //         start = setInterval(displayTime, 1000);
+        //     } else {
+        //         clearInterval(start);
+        //         document.getElementsByTagName("div")[0].innerHTML = "";
+        //     }
+
+        //     displayed = !displayed;
+        // }
+    </script>
+
+
+</body>
+</html>
